@@ -1,6 +1,118 @@
 {% extends "layout.html" %}
+
+{% block sidebar %}
+<div class="col-md-4">
+    <div class="content-section">
+      <h3><a class="mr-2" href="#">Current user name</a></h3>
+      <p class='text-muted'>You can put any information here you'd like.</br>
+        <a class="mr-2" href="#">Pages</a></p>
+        <ul class="list-group">
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <a class="mr-2" href="#">Current user name</a>
+                    </div>
+                </div>
+              </article>
+        </ul>
+        <a class="mr-2" href="#">Connections</a></p>
+        <ul class="list-group">
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                            {% for connection in connections %}
+                            <li  class="list-group-item list-group-item-light">
+                                <a class="mr-2" href="#">{{ connection.name }}</a>
+                            </li>
+                            {% endfor %}
+                    </div>
+                </div>
+              </article>
+        </ul>
+        <a class="mr-2" href="#">My Pages</a></p>
+        <ul class="list-group">
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <a class="mr-2" href="#">I have created these pages</a>
+                    </div>
+                </div>
+              </article>
+        </ul>
+        <a class="mr-2" href="#">Liked Pages</a></p>
+        <ul class="list-group">
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <a class="mr-2" href="#">I liked these pages</a>
+                    </div>
+                </div>
+              </article>
+        </ul>
+        <a class="mr-2" href="#">My Groups</a></p>
+        <ul class="list-group">
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <a class="mr-2" href="#">My created groups</a>
+                    </div>
+                </div>
+              </article>
+        </ul>
+        <a class="mr-2" href="#">Groups</a></p>
+        <ul class="list-group">
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <a class="mr-2" href="#">The groups - I am the member of</a>
+                    </div>
+                </div>
+              </article>
+        </ul>
+      </p>
+    </div>
+  </div>
+{% endblock sidebar %}
 {% block content %}
-   <h1>all updates from others(from connections + from pages or groups) we can see here I can respond to that as well as i can like the posts,
+   <h1>all updates from others(from connections + from pages or groups) We can respond to that as well as i can like the posts,
        Also I can able to post my post/image from here...
    </h1>
+
+    <div class="container">
+        <div class="content-section">
+            <p>You can post from here</p>            
+            <img src="default.jpg" class="rounded" alt="Default image" width="304" height="236"> 
+        </div>
+        <button type="button" class="btn btn-primary">Image Upload</button>
+        <button type="button" class="btn btn-primary">Submit Post</button></br></br>
+    </div>
+
+
+   <div class="col-md-12">
+    <div class="content-section">
+      <h3>All Posts</h3>
+      <p class='text-muted'>Here, We need to show all posts which belongs to all (users/pages/groups)!
+        <!-- <ul class="list-group">
+            {% for connection in pending_requests %}
+            <li  class="list-group-item list-group-item-light">
+                <a class="mr-2" href="#">{{ connection.name }}</a>
+            </li>
+            {% endfor %}
+        </ul> -->
+        {% for post in posts %}
+        <article class="media content-section">
+         <div class="media-body">
+           <div class="article-metadata">
+             <a class="mr-2" href="#">{{ post.author }}</a>
+             <small class="text-muted">{{ post.date_posted }}</small>
+           </div>
+           <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+           <p class="article-content">{{ post.content }}</p>
+           We need to give options for response + thumsup n all
+         </div>
+       </article>
+        {% endfor %}
+      </p>
+    </div>
+  </div>
 {% endblock content %}
